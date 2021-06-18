@@ -1,6 +1,10 @@
 # author : Amit Singh Sansoya [@amit3200]
 from TrieNode import TrieNode
 from collections import defaultdict
+"""
+This is just a helper program which initializes the trie node and shards as per the location.
+Here we maintain the hashmap for the node as per shard so that the request when comes can be directed to the shard.
+"""
 tr1c1 = None
 tr1c2 = None
 tr1mc = None

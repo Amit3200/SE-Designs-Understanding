@@ -1,7 +1,9 @@
 # author : Amit Singh Sansoya [@amit3200]
 # TrieNode : TrieNode Definition
 from collections import defaultdict
-
+"""
+TrieNode as the name suggests contains the information of nodes of Trie.
+"""
 class TrieNode:
     def __init__(self,shard_info, char = None):
         self.childs             = defaultdict(None)

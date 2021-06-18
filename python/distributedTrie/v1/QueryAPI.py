@@ -5,6 +5,11 @@ import string
 import threading
 from Trie import Trie
 
+"""
+QueryAPI is basically the layer where the request is received by backend and then directed to different nodes after identifying the
+trie node from the shard mapper.
+"""
+
 class QueryAPI:
 
     def __init__(self,request, shard_instance):

@@ -1,5 +1,8 @@
 # author : Amit Singh Sansoya [@amit3200]
-
+"""
+ShardClassifier is nothing but a singleton class which behaves as service and has responsibility of returning the 
+trie node when asked if the request has following region and partition.
+"""
 class ShardClassifier:
     __instance = None
     __shard_mapper = None

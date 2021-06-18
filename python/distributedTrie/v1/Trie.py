@@ -1,7 +1,10 @@
 # author : Amit Singh Sansoya [@amit3200]
 from TrieNode import TrieNode
 import json
-
+"""
+Contains the trie functions so this was required to be generic. We need to pass the required trie node from the 
+shard mapper and then we can perform insert,search and show.
+"""
 BLOCK_INDICATIOR = "="*50
 
 class Trie:
