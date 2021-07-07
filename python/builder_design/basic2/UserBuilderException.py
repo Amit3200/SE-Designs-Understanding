@@ -1,3 +1,4 @@
+# author : amit3200 [Amit Singh Sansoya]
 """
 Custom Exception Class. Nothing much here.
 """
