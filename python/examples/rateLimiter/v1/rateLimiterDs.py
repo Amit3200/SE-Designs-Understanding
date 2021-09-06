@@ -1,9 +1,12 @@
 # author : Amit Singh Sansoya [@amit3200]
 from datetime import datetime, timedelta
-from service import ServiceProvider as serve
 from collections import OrderedDict,defaultdict
 import copy
 
+"""
+RateLimiterDs - DataStructure for the ratelimiter and holds the configuration for the rateLimiter.
+This is singelton in nature.
+"""
 class RateLimiterDs:
     RATE_LIMITER_DS = defaultdict(OrderedDict)
     HARD_RATE_LIMIT = 5
@@ -23,7 +26,30 @@ class RateLimiterDs:
             RateLimiterDs.__instance = self
     
 
+"""
+Another class whose work is to process the requests which comes to it assign the accepted or rejected token as per the config.
+This uses the sliding window logic.
+Pros
+-> Handles the boundary conditions.
+-> Better then other approaches.
 
+Cons
+-> Memory used here is more as all the timestamps of those windows are being maintained.
+
+Consider 3 requests allowed in a minute and we get every second one requests
+-> ts = 1 -> rq = 1 [allowed]
+-> ts = 2 -> rq = 2 [allowed]
+-> ts = 3 -> rq = 3 [allowed]
+-> ts = 4 -> rq = 4 [not allowed] [3 requests in 60 sec]
+.....................................................................................
+-> ts = 60 -> rq = 60 [not allowed]
+-> ts = 61 -> rq = 61 [allowed] [rq 1 expires and we had 1 capacity left so allowed]
+-> ts = 62 -> no request        [rq 2 and rq 3 expired]
+-> ts = 63 -> rq = 62 [allowed] [we had 2 capacity left]
+-> ts = 64 -> rq = 63 [allowed] [we had 1 capacity left]
+-> ts = 65 -> rq = 64 [not allowed] [3 requests in 1 min consumed]
+.....................................................................................
+"""
 class RequestProcessor(RateLimiterDs):
     rlds = RateLimiterDs.RATE_LIMITER_DS
 
@@ -83,11 +109,8 @@ class RequestProcessor(RateLimiterDs):
         return [served, ts]
 
 
-                
-    
-    
-
-
+# RequestProcessor becomes kind of singelton because of binding with ratelimiterDs which is singleton since this creates the object for that we can't create for this as well.
+rq = RequestProcessor()
 
     
 

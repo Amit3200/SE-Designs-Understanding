@@ -1,12 +1,21 @@
 # author : Amit Singh Sansoya [@amit3200]
+"""
+User is nothing but a user class
+Generates user_id
+Contains the window object which holds the logs of the user.
+"""
 import time
 from collections import defaultdict
+from service import sp
+
+
 
 class User:
     name : str 
     creation_id : str 
     user_id : str 
     window : defaultdict(list)
+    service_provider = sp
 
     @staticmethod
     def get_creation_id() -> str:
@@ -26,12 +35,9 @@ class User:
     def get_helper_user_id(self):
         return self.user_id
     
-    def get_service_access(self,rq):
-        response = rq.process(self.get_helper_user_id())
-        if response[0]:
-            self.window["Allowed"].append(response[1])
-        else:
-            self.window["Failed"].append(response[1])
+    def get_service_access(self):
+        return self.service_provider.access_service(self)
+
 
 
     
