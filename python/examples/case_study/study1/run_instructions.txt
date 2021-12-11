@@ -1,0 +1,68 @@
+# make sure you have required dependencies
+run service.py
+
+#open the shell run the consumer.py with the topics to track [misc.*, *.engineer, misc.engineer]
+
+#open the shell and shoot the requests
+
+import requests
+url = http://localhost:5000/case/study/1/api/doc/uploads/
+
+file_requests = {
+    'file1' : {'file':open("E:\kai3200\programming\experiments\case_study\study1\inputs\dummy_test_1.txt","rb")},
+    'file2' : {'file':open("E:\kai3200\programming\experiments\case_study\study1\inputs\dummy_test_2.txt","rb")},
+    'file3' : {'file':open("E:\kai3200\programming\experiments\case_study\study1\inputs\dummy_test_3.txt","rb")},
+    'file4' : {'file':open("E:\kai3200\programming\experiments\case_study\study1\inputs\dummy_test_4.txt","rb")}
+}
+
+params1 = {
+    "username":"amit3200",
+    "department":"engineer",
+    "message":"this is upload test?"
+}
+
+params2 = {
+    "username":"takumifujiwara",
+    "department":"street_racer",
+    "message":"this is street_racer the famous akima hill ae86 driver."
+}
+
+params3 = {
+    "username":"shou_oma",
+    "department":"contractor",
+    "message":"this shall be done now."
+}
+
+params4 = {
+    "username":"houtarou",
+    "department":"tech",
+    "message":"""databases can't draw conclusions"""
+}
+
+payload1 = {
+    'file':file_requests['file1']['file'],
+    'json':json.dumps(params1)
+}
+requests.post(url = url, files = payload1)
+
+payload2 = {
+    'file':file_requests['file2']['file'],
+    'json':json.dumps(params2)
+}
+
+payload3 = {
+    'file':file_requests['file3']['file'],
+    'json':json.dumps(params3)
+}
+
+payload4 = {
+    'file':file_requests['file4']['file'],
+    'json':json.dumps(params4)
+}
+responses = []
+for repeats in range(1,6):
+    r2 = requests.post(url = url, files = payload2)
+    r3 = requests.post(url = url, files = payload3)
+    r1 = requests.post(url = url, files = payload1)
+    r4 = requests.post(url = url, files = payload4)
+    responses.append([r1,r2,r3,r4])
