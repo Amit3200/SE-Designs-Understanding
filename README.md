@@ -1,5 +1,5 @@
 # SE-Designs-Understanding
-###### maintained by [`amit3200`](https://github.com/Amit3200)
+#### ```maintained by [`amit3200`](https://github.com/Amit3200)```
 Contains various design strategies with the implementation of them on a small level with an example. This repo helps us to understand how and why one should implement various designs while creating applications.
 
 ## Projects
@@ -9,6 +9,18 @@ Contains various design strategies with the implementation of them on a small le
  ### [case_study](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/case_study/study1)
  ### [distributedTrie](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/distributedTrie/v1)
 
+
+# urlShortner
+ * Mimics the case of an url shortner. Uses 2 queues where the shortened url are generated and kept as some request comes it is consumed and is allocated  to the allocated queue which says that shortened url is used.
+
+# rateLimiter
+ * This allows to rate limit a particular api request.
+
+# logger
+ * Logger is used to log the application uses the sequencing accordingly. Uses heap to map the requests.
+
+# case_study
+ * rabbit_mq application upload asynchronously and notify user about upload using rabbit mq
 
 # Distributed Trie v1 (Shard by Region)
  * This was just a try and mimic program for the simulation in run time memory.
