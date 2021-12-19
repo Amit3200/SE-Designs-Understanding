@@ -7,7 +7,7 @@ Contains various design strategies with the implementation of them on a small le
  #### [rateLimiter](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/rateLimiter/v1)
  #### [logger](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/logger/v1)
  #### [case_study](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/case_study/study1)
- #### distributedTrie](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/distributedTrie/v1)
+ #### [distributedTrie](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/distributedTrie/v1)
 
 
 # urlShortner
