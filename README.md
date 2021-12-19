@@ -3,11 +3,11 @@
 Contains various design strategies with the implementation of them on a small level with an example. This repo helps us to understand how and why one should implement various designs while creating applications.
 
 ## Projects
- > urlShortner(https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/urlShortner/v1)
- > rateLimiter(https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/rateLimiter/v1)
- > logger(https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/logger/v1)
- > case_study(https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/case_study/study1)
- > distributedTrie(https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/distributedTrie/v1)
+ ###> [urlShortner](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/urlShortner/v1)
+ ###> [rateLimiter](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/rateLimiter/v1)
+ ###> [logger](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/logger/v1)
+ ###> [case_study](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/case_study/study1)
+ ###> [distributedTrie](https://github.com/Amit3200/SE-Designs-Understanding/tree/master/python/examples/distributedTrie/v1)
 
 
 # Distributed Trie v1 (Shard by Region)
