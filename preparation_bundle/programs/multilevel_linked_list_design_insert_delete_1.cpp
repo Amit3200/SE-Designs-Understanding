@@ -44,6 +44,7 @@ void build_ll_1(){
 }
 
 void print_ll_v1(Node *root){
+    cout<<"==========================================\n";
     int lvl = 0;
     Node *ptr = root;
     queue<Node*> q;
@@ -159,6 +160,52 @@ Node* ne_insert(Node *parent,int val){
 // not efficient (ne)
 Node* ne_delete(Node *parent,int val){
     // need to implement
+    queue<Node*> q;
+    q.push(parent);
+    int level = 0;
+    bool deleted = false;
+    while(!q.empty()){
+        auto ele = q.front();
+        q.pop();
+        if(ele->down){
+            q.push(ele->down);
+            level += 1;
+        }
+        if((ele->down && ele->down->data > val) || (q.size() == 0 && !ele->down)){
+            int idx = 0;
+            while(ele){
+                // head delete;
+                if(ele->data == val && idx == 0){
+                    ele->next->down = ele->down;
+                    if(level == 1){
+                        parent = ele->next;
+                    }
+                    deleted = true;
+                    break;
+                }
+                else{
+                    if(ele->next->data == val){
+                        if(ele->next->next){
+                            ele->next = ele->next->next;
+                        }
+                        else{
+                            ele->next = nullptr;
+                        }
+                        deleted = true;
+                        break;
+                    }
+                }
+                idx += 1;
+                if(deleted)
+                    break;
+                ele = ele->next;
+            }
+        }
+        if(deleted)
+            break;
+    }
+    parent = ne_adjust(parent);
+    return parent;
 }
 
 int main(){
@@ -175,8 +222,56 @@ int main(){
     root = ne_insert(root,53);
     root = ne_insert(root,10);
     print_ll_v1(root);
+    root = ne_delete(root,31);
+    print_ll_v1(root);
+    root = ne_delete(root,2);
+    print_ll_v1(root);
+    root = ne_delete(root,10);
+    print_ll_v1(root);
+    root = ne_delete(root,32);
+    print_ll_v1(root);
+    root = ne_delete(root,1);
+    print_ll_v1(root);
+    cout<<"End\n";
 }
 
+// Outputs
+// ==========================================
 // 2 7 8 11 
 // 13 16 17 21 
 // 30 32 
+// ==========================================
+// 1 2 6 7 
+// 8 10 11 12 
+// 13 16 17 21 
+// 25 27 30 31 
+// 32 38 45 53 
+// ==========================================
+// 1 2 6 7 
+// 8 10 11 12 
+// 13 16 17 21 
+// 25 27 30 32 
+// 38 45 53 
+// ==========================================
+// 1 6 7 8 
+// 10 11 12 13 
+// 16 17 21 25 
+// 27 30 32 38 
+// 45 53 
+// ==========================================
+// 1 6 7 8 
+// 10 11 12 13 
+// 16 17 21 25 
+// 27 30 32 38 
+// 45 53 
+// ==========================================
+// 1 6 7 8 
+// 10 11 12 13 
+// 16 17 21 25 
+// 27 30 38 45 
+// 53 
+// ==========================================
+// 6 7 8 10 
+// 11 12 13 16 
+// 17 21 25 27 
+// 30 38 45 53 
