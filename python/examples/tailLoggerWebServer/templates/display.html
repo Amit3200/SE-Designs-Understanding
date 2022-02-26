@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Display - Tail L</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/static/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <textarea placeholder = "The logs will appear here" class = "log-watch" id = "log" readonly></textarea>        
+    </body>
+        <script type="text/javascript" charset="utf-8">
+            var socket = io();
+            socket.on('connect', function() {
+                socket.emit('initial', {'socket_id': socket.id});
+            });
+
+            socket.on('push_logs',function(data){
+                console.log(data);
+                document.getElementById("log").innerHTML = data.logs;
+            });
+
+            socket.on('update_logs',function(data){
+                document.getElementById("log").innerHTML += '\n'+data.logs;
+            });
+
+            socket.on('disconnect',function(data){
+                socket.emit('destroy',{'socket_id': socket.id});
+            });
+        </script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel = "stylesheet" href="../static/style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <textarea placeholder="Enter the message here" class = "text-info" id = "showlog" name = "show-log" value = {{tail}} readonly>{{tail}}</textarea>                
+        <form id = "form">
+            <textarea placeholder="Enter the message here" class = "text-info" id = "logdata"></textarea>               
+            <button class = "btn-basic" onclick=window.location.href="{{url_for('receive_ack')}}">Test</button>
+            <button type = "button" class = "btn-basic" onclick = getData()>Submit</button>
+        </form>
+        <script type="text/javascript" charset="utf-8">
+            var socket = io();
+
+            function getData(){
+                var data = document.getElementById("logdata").value;
+                socket.emit('getdata', {data: data});
+                return false;
+            }
+
+            socket.on('display', function(data) {
+                console.log(data)
+                document.getElementById("showlog").innerHTML += data.data;
+                document.getElementById("showlog").value += data.data
+                // socket.emit('message', {data: message});
+            });
+
+        </script>
+    </body>
+</html>

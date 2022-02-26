@@ -1,0 +1,8 @@
+.log-watch{
+    color:black;
+    font-family: 'Courier New', Courier, monospace;
+    height: 512px;
+    width: 80%;
+    margin: 25px auto;
+    display: block;
+}

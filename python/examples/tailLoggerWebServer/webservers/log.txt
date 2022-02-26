@@ -1,0 +1,12 @@
+ python/examples/otpAuthenticator/otp_generator.py  |  90 +++++++++++++++++++++
+ python/examples/otpAuthenticator/user.py           |  70 ++++++++++++++++
+ 4 files changed, 161 insertions(+)
+ create mode 100644 python/examples/otpAuthenticator/__pycache__/otp_generator.cpython-39.pyc
+ create mode 100644 python/examples/otpAuthenticator/dummySecretToken.txt
+ create mode 100644 python/examples/otpAuthenticator/otp_generator.py
+ create mode 100644 python/examples/otpAuthenticator/user.py
+E:\kai3200\programming\designs\to_from_git\SE-Designs-Understanding>git checkout -b caseStudyWebApps
+Switched to a new branch 'caseStudyWebApps'
+E:\kai3200\programming\designs\to_from_git\SE-Designs-Understanding>
+case study1learning
+asdasdasdasasdasdasdasdHellosdadasdworkinggnitset dlrow olleh?etadpu cimanyd

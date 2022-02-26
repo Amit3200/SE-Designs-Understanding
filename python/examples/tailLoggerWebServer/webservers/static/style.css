@@ -1,0 +1,16 @@
+.text-info{
+    height: 512px;
+    width: 80%;
+    margin: 50px auto;
+    display: block;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.btn-basic{
+    margin: 10px auto;
+    height: 30px;
+    display: block;
+    font-family: 'Courier New', Courier, monospace;
+    background-color:royalblue;
+    color:wheat;
+}
