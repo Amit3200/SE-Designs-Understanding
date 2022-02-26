@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link rel = "stylesheet" href="../static/style.css">
+    </head>
+    <body>
+        <textarea placeholder="Enter the message here" class = "text-info" id = "showlog" name = "show-log" value = {{tail}} readonly>{{tail}}</textarea>                
+        <form id = "form">
+            <textarea placeholder="Enter the message here" class = "text-info" id = "logdata" name = "logs"></textarea>               
+            <button class = "btn-basic" onclick=window.location.href="{{url_for('receive_ack')}}">Test</button>
+            <button class = "btn-basic" type = "submit">Submit</button>
+        </form>
+        <script>
+            const socket = new WebSocket('ws://' + location.host + '/echo');
+            socket.addEventListener('message', ev => {
+                document.getElementById("showlog").value += ev.data
+                document.getElementById("showlog").innerHTML += ev.data
+            });
+            document.getElementById('form').onsubmit = ev => {
+            ev.preventDefault();
+            const textField = document.getElementById('logdata');
+            socket.send(textField.value);
+            textField.value = '';
+            };
+        </script>
+    </body>
+</html>
