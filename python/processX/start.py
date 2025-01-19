@@ -1,4 +1,5 @@
 # start.py
+import json
 import time
 from processx.worker import Worker
 from processx.config import Config
@@ -16,7 +17,7 @@ def image_processing_consumer(job):
 def main():
     # Define a mapping of job types to consumer functions
     consumer_func_map = {
-        "image_queue": image_processing_consumer
+        "image_processing": image_processing_consumer
     }
 
     # Create and start the worker

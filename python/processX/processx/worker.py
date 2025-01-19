@@ -1,3 +1,4 @@
+import json
 import threading
 import time
 from .rabbitmq_client import RabbitMQClient
@@ -53,6 +54,7 @@ class Worker:
         self.logger.info(f"Worker for queue '{queue_name}' is stopping.")
 
     def process_job(self, job):
+        job = json.loads(job)
         consumer_func = self.consumer_func_map.get(job['job_type'])
         if consumer_func:
             try:
